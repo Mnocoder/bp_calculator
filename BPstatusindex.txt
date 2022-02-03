@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>KnowYou</title>
+<meta name=" viewport" content=" width = device-width , inital-scale = 1">
+<style>
+html{
+  background : linear-gradient(90deg,cornsilk,white,cornsilk,white,cornsilk);
+  filter:saturate(250%);
+  text-align:center;
+}
+header{
+  color:  rgb(150,100,0);
+  text-align:center;
+  font-size:70px;
+  margin: 15px 0 50px 0;
+}
+h1{
+  color:  red;
+  font-weight:bold;
+  font-size:50px;
+  margin : 100px 0 25px 0;
+}
+em{ color:rgb(200,100,255);
+}
+h5{
+    font-size:25px;
+    padding: 0 60px 0 60px;
+  }
+form{
+  color:blue;
+  font-size:40px;
+  padding: 0 20px 0 20px;  
+}
+input{
+    font-size:35px;
+}
+#FINISH{
+  color: green;
+  font-size:30px;
+  padding: 40px 70px 0 70px;
+}
+#go{
+  border:solid 5px maroon;
+  margin:40px 35px 0 0;
+}
+#go:hover{
+  opacity : 0.5;
+  color: gray;
+}
+#reset{
+  color:red;
+  font-size:10px;
+  }
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  font-weight:bold;
+  color: blue;
+  font-size:25px;
+  text-align: center; 
+}
+</style>
+<script>
+function check(){ 
+  var a =Number(document.getElementById("sp").value);
+  var b =Number(document.getElementById("dp").value);
+(a<b)?alert("Diastolic pressure (DP) value is greater than Systolic pressure (SP) value !  Change it"): bp();
+  }
+function bp(){
+    var a =Number(document.getElementById("sp").value);
+  var b =Number(document.getElementById("dp").value);
+  document.getElementById("reset").innerHTML="Click RESET to enter new values";
+ var status="Status :    ";
+  if(a>=210 && b>=120){
+document.getElementById("FINISH").innerHTML=status+"High Blood Pressure (HYPERTENSION) - stage 4"+"<br>"+"<br>"+" Seek immediate medical attention "+"<br>"+"<br>"+" Symptoms are pain in chest , neck , upper belly , shoulders , excessive sweating , sudden numbness (or) tingling "+"<br>"+"If you have any , seek a doctor immediately";
+  }
+    else if(a<210&&a>=180 && b<=120&&b>=110){
+     document.getElementById("FINISH").innerHTML=status+"High Blood Pressure (HYPERTENSION) - stage 3"+"<br>"+"<br>"+" Seek immediate medical attention "+"<br>"+"<br>"+" Symptoms are pain in chest , neck , upper belly , shoulders , excessive sweating , sudden numbness (or) tingling "+"<br>"+"If you have any , seek a doctor immediately";
+  }
+   else  if(a<180&&a>=160 && b<=110&&b>=100){
+    document.getElementById("FINISH").innerHTML=status+"High Blood Pressure (HYPERTENSION) - stage 2"+"<br>"+"<br>"+"Try to clam down to bring down blood pressure level"+"<br>"+" Lie down and take deep breaths to reduce immediately ";
+  }else if(a<160&&a>=140 && b<=100&&b>=90){
+     document.getElementById("FINISH").innerHTML=status+"High Blood Pressure (HYPERTENSION) - stage 1"+"<br>"+"<br>"+"Try to calm down to bring down blood pressure level"+"<br>"+" Lie down and take deep breaths to reduce immediately ";
+  }
+  else if (a<140&&a>=130 && b<=90&&b>=85){
+     document.getElementById("FINISH").innerHTML=status+"Pre-High Blood Pressure "+"<br>"+"<br>"+" Just be calm to get normal blood pressure";
+  }
+  else if (a<130&&a>=121 && b<=85&&b>=80){
+     document.getElementById("FINISH").innerHTML=status+"High Blood Pressure "+"<br>"+"<br>"+" Just be calm to get normal blood pressure";
+  }
+  else if(a<121&&a>=100 && b<=80&&b>=65){
+     document.getElementById("FINISH").innerHTML=status+"Normal Blood Pressure"+"<br>"+"<br>"+" No medications needed";
+  }
+  else if(a<100&&a>=90 && b<=65&&b>=60){
+     document.getElementById("FINISH").innerHTML=status+"Low Normal Blood Pressure"+"<br>"+"<br>"+" This is temporary , Be hydrated";
+  }
+  else if(a<90&&a>=70 && b<=60&&b>=40){
+     document.getElementById("FINISH").innerHTML=status+"Low Blood Pressure (MODERATE  HYPOTENSION)"+"<br>"+"<br>"+" Dehydration sometimes leads to this condition "+"<br>"+" Drink more water to increase blood pressure";
+  }
+  else if(a<70&&a>=50 && b<=40&&b>=35){
+    document.getElementById("FINISH").innerHTML=status+"Too Low Blood Pressure (SEVERE HYPOTENSION)"+"<br>"+"<br>"+" Seek immediate medical attention "+"<br>"+"<br>"+" Symptoms are dizziness , fainting , nausea , blurred vision , fatigue , quick,shallow breathing"+"<br>"+"If you have any , seek a doctor immediately";
+  }else if(a<50 && b<35){
+  document.getElementById("FINISH").innerHTML=status+"Extremely Low Blood Pressure (EXTREMELY SEVERE HYPOTENSION)"+"<br>"+"<br>"+" Seek immediate medical attention "+"<br>"+"<br>"+" Symptoms are dizziness , fainting , nausea , blurred vision , fatigue , quick,shallow breathing"+"<br>"+"If you have any , seek a doctor immediately";
+  }else{
+      document.getElementById("FINISH").innerHTML="";
+      warning();
+    }   
+}
+function warning(){
+    alert("Wrong pair of values. For systolic and diastolic pressure values , Try\n\r  Above 210/Above 120\n\r  210-180/120-110\n\r 170-160/109-100\n\r 159-140/99-90\n\r 139-130/89-85\n\r 129-121/84-81\n\r 120-100/80-65\n\r 99-90/64-60\n\r 89-70/59-40\n\r 69-50/39-35\n\r Below 50/Below 35");
+}
+function reset(){
+  document.getElementById("sp").value="";
+  document.getElementById("dp").value="";
+}
+</script>
+ </head>  
+<body>	
+<header>KnowYou</header>
+<h1>Know your<br>Blood Pressure Status</h1>
+ <form>
+<h5>Enter your <strong><em>systolic</em></strong> and <strong><em>diastolic</em></strong> pressure values in appropriate places</h5>
+<label>Systolic pressure  (SP) (mmHg):</label><br><br>
+<input id="sp" type="text" placeholder="Example: 120"><br><br>
+<label>Diastolic pressure (DP) (mmHg):</label><br><br>
+<input id="dp" type="text" placeholder="Example: 80">
+</form>
+<input id="go" type="submit" name="submit" value="  KNOW   " onclick="check()">
+<input id="go" type="button" value="  RESET  " onclick="reset()"><br><br>
+<p id="reset"></p>
+<p id="FINISH"></p><br>
+<footer>KnowYou.org<br>CREATOR : Mohan V.</footer>  
+
+</body></html>
